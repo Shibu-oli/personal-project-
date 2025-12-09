@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Heart Beat</title>
+</head>
+<body>
+    <!-- 20 floating particles -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+    <div class="heart-container">
+        <div class="shockwave"></div>
+        <div class="shockwave"></div>
+    <div class="shockwave"></div>
+
+        <svg viewBox="0 0 600 600" class="heart-svg">
+
+            <!-- OUTER HEART -->
+            <path id="heartPath1"
+                d="M300,520
+                   C100,360 40,200 150,120
+                   C230,60 330,100 300,200
+                   C270,100 370,60 450,120
+                   C560,200 500,360 300,520"
+                fill="none" stroke="none"/>
+
+            <!-- MIDDLE HEART -->
+            <path id="heartPath2"
+                d="M300,500
+                   C120,350 70,210 165,140
+                   C240,80 325,115 300,200
+                   C275,115 360,80 435,140
+                   C530,210 480,350 300,500"
+                fill="none" stroke="none"/>
+
+            <!-- INNER HEART -->
+            <path id="heartPath3"
+                d="M300,480
+                   C150,340 100,230 185,160
+                   C255,110 320,130 300,200
+                   C280,130 345,110 415,160
+                   C500,230 450,340 300,480"
+                fill="none" stroke="none"/>
+
+            <!-- TEXT OUTER -->
+            <text class="ring">
+                <textPath href="#heartPath1">
+                    I love you kusu • I love you kusu • I love you kusu •
+                    I love you kusu • I love you kusu • I love you kusu •
+                    I love you kusu • I love you kusu • I love you kusu •
+                </textPath>
+            </text>
+
+            <!-- TEXT MIDDLE -->
+            <text class="ring">
+                <textPath href="#heartPath2">
+                    I love you kusu • I love you kusu • I love you kusu •
+                    I love you kusu • I love you kusu • I love you kusu •
+                    I love you kusu • I love you kusu • I love you kusu •
+                </textPath>
+            </text>
+
+            <!-- TEXT INNER -->
+            <text class="ring">
+                <textPath href="#heartPath3">
+                    I love you kusu • I love you kusu • I love you kusu •
+                    I love you kusu • I love you kusu • I love you kusu •
+                </textPath>
+            </text>
+
+        </svg>
+    </div>
+</body>
+</html>
