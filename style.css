@@ -1,0 +1,222 @@
+/* SMOOTH TEXT IN SVG */
+svg, text {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+}
+
+/* RESET + BACKGROUND */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #460000;
+    overflow: hidden;
+}
+
+/* CENTER CONTAINER */
+.heart-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    perspective: 1000px; /* gives real 3D feel */
+}
+
+/* ------------------------------------------ */
+/* ❤️ ROTATING WRAPPER + BEATING SVG          */
+/* ------------------------------------------ */
+
+/* this rotates in 3D */
+.heart-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    animation: rotate3d 14s ease-in-out infinite;
+}
+
+/* this only beats (scales) */
+.heart-svg {
+    width: 60%;
+    display: block;
+    transform-origin: center;
+    animation: beat 1.6s ease-in-out infinite;
+}
+
+/* glowing text on paths */
+text.ring textPath {
+    fill: #ff9bc7;
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px #ffb3dc;
+}
+
+/* ❤️ HEARTBEAT – just scale */
+@keyframes beat {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(1.08); }
+    60%  { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+/* 🔄 3D ROTATION – only on wrapper */
+@keyframes rotate3d {
+    0% {
+        transform: rotateY(0deg) rotateX(8deg);
+    }
+    25% {
+        transform: rotateY(90deg) rotateX(10deg);
+    }
+    50% {
+        transform: rotateY(180deg) rotateX(8deg);
+    }
+    75% {
+        transform: rotateY(270deg) rotateX(10deg);
+    }
+    100% {
+        transform: rotateY(360deg) rotateX(8deg);
+    }
+}
+
+/* ------------------------------------------ */
+/* 🔮 REFLECTION UNDER HEART (on wrapper)      */
+/* ------------------------------------------ */
+
+.heart-wrapper::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-50%) scaleY(-1);
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.02) 60%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    filter: blur(50px);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* ------------------------------------------ */
+/* ✨ HEART-SHAPED FLOATING PARTICLES          */
+/* ------------------------------------------ */
+
+.particle {
+    position: fixed;
+    bottom: -20px;
+    width: 12px;
+    height: 12px;
+    background: pink;
+    transform: rotate(45deg);
+    box-shadow: 0 0 12px rgba(255, 180, 220, 1);
+    z-index: 1;
+    animation: floatHeart 7s linear infinite;
+}
+
+/* top circles of the heart */
+.particle::before,
+.particle::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: pink;
+    border-radius: 50%;
+}
+
+.particle::before {
+    top: -6px;
+    left: 0;
+}
+
+.particle::after {
+    left: -6px;
+    top: 0;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) translateX(0) rotate(45deg) scale(1);
+        opacity: 0.3;
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-130vh) translateX(30px) rotate(45deg) scale(0.6);
+        opacity: 0;
+    }
+}
+
+/* Particle positions */
+.particle:nth-child(1)  { left: 5%;  animation-duration: 8s; }
+.particle:nth-child(2)  { left: 12%; animation-duration: 7s; }
+.particle:nth-child(3)  { left: 20%; animation-duration: 9s; }
+.particle:nth-child(4)  { left: 28%; animation-duration: 6s; }
+.particle:nth-child(5)  { left: 35%; animation-duration: 8.5s; }
+.particle:nth-child(6)  { left: 42%; animation-duration: 7.8s; }
+.particle:nth-child(7)  { left: 50%; animation-duration: 6.3s; }
+.particle:nth-child(8)  { left: 58%; animation-duration: 9.1s; }
+.particle:nth-child(9)  { left: 65%; animation-duration: 7.4s; }
+.particle:nth-child(10) { left: 72%; animation-duration: 8.9s; }
+
+.particle:nth-child(11) { left: 10%; animation-duration: 7.2s; }
+.particle:nth-child(12) { left: 18%; animation-duration: 6.5s; }
+.particle:nth-child(13) { left: 26%; animation-duration: 7.9s; }
+.particle:nth-child(14) { left: 34%; animation-duration: 9.4s; }
+.particle:nth-child(15) { left: 47%; animation-duration: 6.1s; }
+.particle:nth-child(16) { left: 54%; animation-duration: 8.8s; }
+.particle:nth-child(17) { left: 62%; animation-duration: 7s; }
+.particle:nth-child(18) { left: 70%; animation-duration: 6.8s; }
+.particle:nth-child(19) { left: 86%; animation-duration: 8.3s; }
+.particle:nth-child(20) { left: 95%; animation-duration: 7.6s; }
+
+/* ------------------------------------------ */
+/* 🌟 GLOWING SHOCKWAVE RINGS                 */
+/* ------------------------------------------ */
+
+.shockwave {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 3px solid rgba(255, 150, 200, 0.7);
+    border-radius: 50%;
+    filter: blur(8px);
+    opacity: 0;
+    z-index: 0;
+    animation: shock 1.6s ease-out infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.4);
+}
+
+@keyframes shock {
+    0% {
+        transform: translate(-50%, -50%) scale(0.4);
+        opacity: 0.8;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(3.5);
+        opacity: 0.15;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(5);
+        opacity: 0;
+    }
+}
+
+.shockwave:nth-child(1) { animation-delay: 0s; }
+.shockwave:nth-child(2) { animation-delay: 0.3s; }
+.shockwave:nth-child(3) { animation-delay: 0.6s; }
